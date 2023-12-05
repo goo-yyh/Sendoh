@@ -1,32 +1,33 @@
 use std::path::PathBuf;
 use std::fs;
-use std::sync::Arc;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use swc_common::SourceMap;
+use swc_common::sync::Lrc;
+use swc_ecma_visit::VisitWith;
 
 use crate::lyy_parse::parse_ast;
-use crate::lyy_visit::WebpackAsyncVisit;
+use crate::lyy_webpack_visit::{WebpackAsyncVisit, WebpackMainVisit};
 
 #[derive(Default)]
 pub struct Webpack {
     dist: PathBuf,
-    cm: Arc<SourceMap>,
-    module_ids: Vec<String>,
-    code_map: HashMap<String, String>
+    cm: Lrc<SourceMap>,
+    pub module_ids: HashSet<String>,
+    pub code_map: HashMap<String, String>
 }
 
 impl Webpack {
     pub fn new(path: &str) -> Self {
         Webpack {
             dist: PathBuf::from(path),
-            module_ids: Vec::new(),
+            module_ids: HashSet::new(),
             code_map: HashMap::new(),
-            cm: Arc::new(Default::default())
+            cm: Lrc::new(Default::default())
         }
     }
 
-    pub fn get_files(&self) {
+    pub fn get_files(&mut self) {
         let dir = fs::read_dir(&self.dist).unwrap();
         for file in dir {
             let entry = file.unwrap();
@@ -42,10 +43,31 @@ impl Webpack {
         }
     }
 
-    pub fn parse_file(&self, path: &PathBuf, is_main: bool) {
-        let file_path = path.to_str().unwrap();
+    pub fn parse_file(&mut self, path: &PathBuf, is_main: bool) {
         let ast = parse_ast(path, &self.cm);
+        
+        if !is_main {
+            let mut async_visitor = WebpackAsyncVisit::new(self.cm.clone());
+            ast.visit_with(&mut async_visitor);
+            let ids = async_visitor.module_ids;
+            let map = async_visitor.module_map;
 
-        println!("file_path: {}", file_path);
+            for id in ids {
+                self.module_ids.insert(id.clone());
+                self.code_map.insert(id.clone(), map.get(&id).unwrap().to_string());
+            }
+        } else {
+            let mut main_visitor = WebpackMainVisit::new(self.cm.clone());
+            ast.visit_with(&mut main_visitor);
+
+            let ids = main_visitor.module_ids;
+            let map = main_visitor.module_map;
+
+            for id in ids {
+                self.module_ids.insert(id.clone());
+                self.code_map.insert(id.clone(), map.get(&id).unwrap().to_string());
+            }
+        }
+        
     }
 }

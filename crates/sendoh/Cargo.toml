@@ -1,0 +1,13 @@
+[package]
+name = "sendoh"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+swc_common = { version = "0.33.10" }
+swc_ecma_ast = { version = "0.110.12" }
+swc_ecma_visit = { version = "0.96.12" }
+swc_ecma_parser = { version = "0.141.30" }
+swc_ecma_codegen = { version = "0.146.39" }

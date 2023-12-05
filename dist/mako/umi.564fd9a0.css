@@ -1,0 +1,12 @@
+h2 {
+  color: red;
+}
+ul {
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+li {
+  margin-right: 1em;
+}
+/*# sourceMappingURL=umi.564fd9a0.css.map*/

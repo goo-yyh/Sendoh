@@ -37,7 +37,7 @@ impl Mako {
             let is_main = !is_async && file_name.ends_with(".js");
 
             if file_name.ends_with(".js") {
-                println!("name: {}", file_name);
+                println!("file name: {}", file_name);
                 self.parse_file(&self.dist.join(file_name), is_main);
             }
         }

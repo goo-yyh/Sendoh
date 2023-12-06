@@ -1,0 +1,1 @@
+{"version":3,"file":"layouts__index.0646bb0d.chunk.css","mappings":"AAAA,aAEE,gBACA,aAEF,GACE","sources":["webpack:///./src/layouts/index.css"],"sourcesContent":["ul {\n  padding: 0;\n  list-style: none;\n  display: flex;\n}\nli {\n  margin-right: 1em;\n}\n"],"names":[],"sourceRoot":""}

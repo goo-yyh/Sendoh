@@ -1,0 +1,7 @@
+{
+    "scripts": {
+        "dev": "cd app && npm run dev",
+        "json": "cargo run --package sendoh --bin sendoh ",
+        "start": "npm run json && npm run dev"
+    }
+}

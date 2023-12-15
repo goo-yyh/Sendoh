@@ -18,13 +18,13 @@ use crate::mako::Mako;
 use crate::config::Config;
 use crate::utils::{compare_module, compare_code, CodeDiff};
 
-fn main() {
+fn _main() {
     let mut Config = Config::new("/Users/yuyuehui/umi-max-test/.umirc.ts");
 
     Config.edit_to_webpack();
 }
 
-fn _main() {
+fn main() {
     let mut webpack = Webpack::new("dist/webpack");
     webpack.get_files();
 

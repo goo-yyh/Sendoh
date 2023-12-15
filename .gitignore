@@ -3,6 +3,7 @@
 */.env.local
 */.umirc.local.ts
 */config/config.local.ts
+*/src/data
 */src/.umi
 */src/.umi-production
 */src/.umi-test
@@ -10,5 +11,6 @@
 */.umi-production
 */.umi-test
 */.mfsu
+*/data
 .swc
 

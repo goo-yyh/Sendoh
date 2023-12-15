@@ -1,9 +1,11 @@
+mod config;
 mod mako;
 mod webpack;
 mod utils;
 mod lyy_parse;
 mod lyy_webpack_visit;
 mod lyy_mako_visit;
+mod lyy_config_visit;
 
 use std::collections::HashMap;
 use std::fs::File;
@@ -13,9 +15,16 @@ use serde_json;
 
 use crate::webpack::Webpack;
 use crate::mako::Mako;
+use crate::config::Config;
 use crate::utils::{compare_module, compare_code, CodeDiff};
 
 fn main() {
+    let mut Config = Config::new("/Users/yuyuehui/umi-max-test/.umirc.ts");
+
+    Config.edit_to_webpack();
+}
+
+fn _main() {
     let mut webpack = Webpack::new("dist/webpack");
     webpack.get_files();
 

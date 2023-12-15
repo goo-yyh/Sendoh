@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::path::Path;
 
 use serde::{Serialize, Deserialize};
 
@@ -10,7 +11,7 @@ pub fn compare_module(mako_modules: &Vec<String>, webpack_modules: &Vec<String>)
     for w in webpack_modules {
         let mut more = true;
         for m in mako_modules {
-            if w.ends_with(m) {
+            if w.ends_with(m) || m.ends_with(w) {
                 connect_map.insert(w.clone(), m.clone());
                 more = false;
                 break;
@@ -25,7 +26,7 @@ pub fn compare_module(mako_modules: &Vec<String>, webpack_modules: &Vec<String>)
     for m in mako_modules {
         let mut more = true;
         for w in webpack_modules {
-            if w.ends_with(m) {
+            if w.ends_with(m) || m.ends_with(w) {
                 more = false;
                 break;
             }
@@ -46,7 +47,8 @@ pub struct CodeDiff {
     webpack_code: String,
     mako_line: u16,
     webpack_line: u16,
-    diff_line: u16
+    diff_line: u16,
+    webpack_more_than_mako: bool
 }
 
 fn get_line_count(code: String) -> u16 {
@@ -75,6 +77,7 @@ pub fn compare_code(
                 webpack_code: code.clone(),
                 mako_line: m_len,
                 webpack_line: w_len,
+                webpack_more_than_mako: w_len > m_len,
                 diff_line: w_len.abs_diff(m_len)
             })
         }
@@ -84,4 +87,3 @@ pub fn compare_code(
 
     code_diff_arr
 }
-

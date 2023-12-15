@@ -1,4 +1,17 @@
 {
+  "webpack": [
+    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
+    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/defineProperty.js",
+    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/objectSpread2.js",
+    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/regeneratorRuntime.js",
+    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/toPrimitive.js",
+    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/toPropertyKey.js",
+    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/typeof.js",
+    "./node_modules/.pnpm/process@0.11.10/node_modules/process/browser.js",
+    "./src/.umi-production/core/terminal.ts",
+    "./src/layouts/index.css?modules",
+    "./src/pages/index.css"
+  ],
   "mako_len": [
     "../rust/mako/node_modules/.pnpm/node-libs-browser-okam@2.2.4/node_modules/node-libs-browser-okam/polyfill/global.js",
     "../rust/mako/node_modules/.pnpm/node-libs-browser-okam@2.2.4/node_modules/node-libs-browser-okam/polyfill/process.js",
@@ -1035,18 +1048,5 @@
     "node_modules/.pnpm/@umijs+renderer-react@4.0.81_react-dom@18.1.0_react@18.1.0/node_modules/@umijs/renderer-react/dist/index.js",
     "src/.umi-production/umi.ts",
     "src/layouts/index.css?asmodule"
-  ],
-  "webpack": [
-    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/asyncToGenerator.js",
-    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/defineProperty.js",
-    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/objectSpread2.js",
-    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/regeneratorRuntime.js",
-    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/toPrimitive.js",
-    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/toPropertyKey.js",
-    "./node_modules/.pnpm/@babel+runtime@7.21.0/node_modules/@babel/runtime/helpers/typeof.js",
-    "./node_modules/.pnpm/process@0.11.10/node_modules/process/browser.js",
-    "./src/.umi-production/core/terminal.ts",
-    "./src/layouts/index.css?modules",
-    "./src/pages/index.css"
   ]
 }

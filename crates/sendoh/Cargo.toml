@@ -11,5 +11,6 @@ swc_ecma_ast = { version = "0.110.12" }
 swc_ecma_visit = { version = "0.96.12" }
 swc_ecma_parser = { version = "0.141.30" }
 swc_ecma_codegen = { version = "0.146.39" }
+swc_ecma_utils = { version = "0.125.0" }
 serde = { version = "1.0.130", features = ["derive"] }
 serde_json = "1.0.68"

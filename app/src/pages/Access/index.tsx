@@ -14,9 +14,10 @@ const AccessPage: React.FC = () => {
   const list = diff.slice(0, 50);
 
   const options = list.map((item, index) => {
-    const { webpack, diff_line } = item;
+    const { webpack, diff_line, webpack_line, mako_line } = item;
+    const more = mako_line > webpack_line ? '多于' : '少于';
     return {
-      label: `(差异${diff_line}行) ${webpack}`,
+      label: `(${more}webpack${diff_line}行) ${webpack}`,
       value: index
     }
   })
